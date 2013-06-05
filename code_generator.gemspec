@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'CodeGenerator'
+  s.name        = 'code_generator'
   s.version     = '0.0.1'
   s.date        = '2013-06-05'
   s.summary     = "A alpha-numeric code generator"
