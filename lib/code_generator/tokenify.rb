@@ -4,6 +4,9 @@ module CodeGenerator
   
     module ClassMethods
       def tokenify!(field, opts = {})
+        opts[:uniqueness] = { model: self.to_s.underscore, 
+                              field: field } if opts.delete(:unique)
+        
         after_initialize do |record|
           if record.send(field).blank?
             token = CodeGenerator::Generator.generate(opts)
@@ -12,5 +15,6 @@ module CodeGenerator
         end
       end
     end
+    
   end
 end
