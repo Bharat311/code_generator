@@ -6,18 +6,18 @@ module CodeGenerator
   
   class Generator
     
-    attr_reader :scoped_class
+    attr_reader :model
     attr_accessor :length, :uniqueness
   
     def initialize(opts = {})
       opts.symbolize_keys!
       @length     = opts.delete(:length) || CodeGenerator.length
       @uniqueness = opts.delete(:uniqueness)
-      set_scoped_class_and_field! if uniqueness
+      set_model_and_field! if uniqueness
     end
   
     def unique?
-      @scoped_class.send(:where, {@field_name => @code}).empty?
+      @model.send(:where, {@field_name => @code}).empty?
     end
     
     def random_string
@@ -42,16 +42,16 @@ module CodeGenerator
   
     private
   
-      def get_scoped_class
-        uniqueness[:scope].to_s.classify.constantize
+      def get_model
+        uniqueness[:model].to_s.classify.constantize
       rescue
         raise CodeGenerator::ClassNotFoundError
       end
     
-      def set_scoped_class_and_field!
-        raise CodeGenerator::ScopeNotSpecifiedError if uniqueness[:scope].blank?
+      def set_model_and_field!
+        raise CodeGenerator::ScopeNotSpecifiedError if uniqueness[:model].blank?
         raise CodeGenerator::FieldNotSpecifiedError if uniqueness[:field].blank?
-        @scoped_class = get_scoped_class
+        @model = get_model
         @field_name = uniqueness[:field]
         #TODO - raise an error if field not found for the model. Needs to be indepedent for ActiveRecord & Mongoid.
       end
