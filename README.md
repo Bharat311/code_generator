@@ -29,20 +29,43 @@ Really simple:
     # unique for particular field in a model
     token = CodeGenerator::Generator.generate(uniqueness: { model: :user, field: :confirmation_code })
 
+## ORM - ActiveRecord/Mongoid
+
+When using ActiveRecord or Mongoid as your rails project ORM, it also provides you the class method tokenify! that can be used to generate random, unique tokens for the specified field.
+
+    # ActiveRecord
+    class Service
+      attr_accessible :auth_token
+      
+      tokenify!(:auth_token, length: 16)
+    end
+
+    # Mongoid
+    class Service
+      include Mongoid::CodeGenerator
+      field :auth_token, type: String
+      
+      tokenify!(:auth_token, unique: true)
+    end
+    
+In addition, you can pass the *:length (default: 10)* and *:unique (default: false)* options also.
+
 ## Configuration
 
-You can configure the tokens to be generated. Simply create a new code_generator.rb file in your /config/initializers folder of your rails project:
+You can configure the tokens to be generated. Simply create a new *'code_generator.rb'* file in the *'/config/initializers'* folder of your rails project:
 
     CodeGenerator.configure do |code|
-      code.length         = 6               # length of the tokens to be generated.
+      code.length         = 6               # length of the tokens to be generated. (default: 10)
       code.use_chars      = :numeric        # type of token to be generated. (default: :alpha_numeric)
-      code.invalid_chars  = [ 0, 1, 7 ]     # do not use these characters.
-      code.valid_chars    = [ 3, 4, 5, 6 ]  # use only these characters (ignores :use_chars).
-      code.include_chars  = [ "$", "%" ]    # use these characters as well (does not ignore :use_chars).
+      code.invalid_chars  = [ 0, 1, 7 ]     # do not use these characters. (default: none)
+      code.valid_chars    = [ 3, 4, 5, 6 ]  # use only these characters (ignores :use_chars). (default: none)
+      code.include_chars  = [ "$", "%" ]    # use these characters as well (does not ignore :use_chars). (default: none)
       code.repeat_chars   = false           # each character to be used once. (default: true)
     end
 
-You can use :alpha, :lower_alpha, :upper_alpha, :numeric, :lower_alpha_numeric, :upper_alpha_numeric, :alpha_numeric as various token types. Default is :alpha_numeric.
+You can use *:alpha (a-Z), :lower_alpha (a-z), :upper_alpha (A-Z), :numeric (0-9), :lower_alpha_numeric (a-z, 0-9), :upper_alpha_numeric (A-Z, 0-9), :alpha_numeric (a-Z, 0-9)* as various token types. Default is *:alpha_numeric*.
+
+**Note** - These configuration settings apply to the 'tokenify!' method as well.
 
 ## Contributing
 
@@ -54,8 +77,8 @@ You can use :alpha, :lower_alpha, :upper_alpha, :numeric, :lower_alpha_numeric, 
 
 ## Contributors
 
-[Jitendra Rai](https://github.com/jitendra)
-[Bharat Gupta](https://github.com/Bharat311)
+* [Jitendra Rai](https://github.com/jitendra)
+* [Bharat Gupta](https://github.com/Bharat311)
 
 ## License
 
