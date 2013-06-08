@@ -5,8 +5,8 @@ Gem::Specification.new do |s|
   s.name          = 'code_generator'
   s.version       = CodeGenerator::VERSION
   s.date          = '2013-06-05'
-  s.summary       = "A alpha-numeric code generator"
-  s.description   = "A alpha-numeric code generator"
+  s.summary       = "An alpha-numeric code generator"
+  s.description   = "An alpha-numeric code generator"
   s.authors       = ["Bharat Gupta"]
   s.email         = 'bindassbharat311@gmail.com'
   s.files         = `git ls-files`.split("\n")

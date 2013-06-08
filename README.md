@@ -21,13 +21,13 @@ Or install it yourself as:
 Really simple:
 
     # creating random token
-    token = CodeGenerator::Generate.generate
+    token = CodeGenerator::Generator.generate
     
     # specific length
-    token = CodeGenerator::Generate.generate(length: 10)
+    token = CodeGenerator::Generator.generate(length: 10)
 
     # unique for particular field in a model
-    token = CodeGenerator::Generate.generate(uniqueness: { model: :user, field: :confirmation_code })
+    token = CodeGenerator::Generator.generate(uniqueness: { model: :user, field: :confirmation_code })
 
 ## Configuration
 
