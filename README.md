@@ -1,6 +1,6 @@
 # CodeGenerator
 
-Easily create unique and random tokens for your use.
+Easily create unique and random tokens for your rails project.
 
 ## Installation
 
