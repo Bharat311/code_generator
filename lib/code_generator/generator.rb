@@ -21,10 +21,19 @@ module CodeGenerator
     end
     
     def random_string
-      chars = CodeGenerator.valid_characters
-      Array.new(length){ chars.sample() }.join
+      chars = CodeGenerator.valid_characters.dup
+      generator = if CodeGenerator.repeat_chars
+        lambda{ chars.sample() }
+      else
+        lambda{ chars.delete_at(rand(chars.length)) }
+      end
+      randomized_array &generator      
     end
   
+    def randomized_array(&block)
+      Array.new(length){ block.call }.join
+    end
+    
     def generate_code
       @code = random_string
       if generate_unique?

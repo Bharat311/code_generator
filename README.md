@@ -35,10 +35,11 @@ You can configure the tokens to be generated. Simply create a new code_generator
 
     CodeGenerator.configure do |code|
       code.length         = 6               # length of the tokens to be generated.
-      code.use_chars      = :numeric        # type of token to be generated.
+      code.use_chars      = :numeric        # type of token to be generated. (default: :alpha_numeric)
       code.invalid_chars  = [ 0, 1, 7 ]     # do not use these characters.
       code.valid_chars    = [ 3, 4, 5, 6 ]  # use only these characters (ignores :use_chars).
-      code.include_chars  = [ "$", "%" ]    # use these characters as well (do not ignore :use_chars).
+      code.include_chars  = [ "$", "%" ]    # use these characters as well (does not ignore :use_chars).
+      code.repeat_chars   = false           # each character to be used once. (default: true)
     end
 
 You can use :alpha, :lower_alpha, :upper_alpha, :numeric, :lower_alpha_numeric, :upper_alpha_numeric, :alpha_numeric as various token types. Default is :alpha_numeric.

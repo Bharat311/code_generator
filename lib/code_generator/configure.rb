@@ -21,6 +21,9 @@ module CodeGenerator
   @@invalid_chars = Array.new
   
   mattr_accessor :valid_chars
+
+  mattr_accessor :repeat_chars
+  @@repeat_chars = true
   
   class << self
     def configure
