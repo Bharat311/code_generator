@@ -13,6 +13,9 @@ module CodeGenerator
   
   mattr_accessor :use_chars
   @@use_chars = :alpha_numeric
+
+  mattr_accessor :include_chars
+  @@include_chars = nil
   
   mattr_accessor :invalid_chars
   @@invalid_chars = Array.new
@@ -27,6 +30,7 @@ module CodeGenerator
     def valid_characters
       return @@valid_chars if @@valid_chars
       _chars    = "CodeGenerator::#{use_chars.upcase}".constantize
+      _chars   |=  include_chars unless include_chars.empty?
       _invalid  = invalid_chars
       @@valid_chars = _chars - _invalid
     end
