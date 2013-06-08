@@ -27,7 +27,7 @@ Really simple:
     token = CodeGenerator::Generate.generate(length: 10)
 
     # unique for particular field in a model
-    token = CodeGenerator::Generate.generator(uniqueness: { model: :user, field: :confirmation_code })
+    token = CodeGenerator::Generate.generate(uniqueness: { model: :user, field: :confirmation_code })
 
 ## Configuration
 
