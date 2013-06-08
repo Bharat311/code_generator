@@ -15,7 +15,7 @@ module CodeGenerator
   @@use_chars = :alpha_numeric
 
   mattr_accessor :include_chars
-  @@include_chars = nil
+  @@include_chars = Array.new
   
   mattr_accessor :invalid_chars
   @@invalid_chars = Array.new
