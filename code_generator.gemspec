@@ -4,9 +4,9 @@ require "code_generator/version"
 Gem::Specification.new do |s|
   s.name          = 'code_generator'
   s.version       = CodeGenerator::VERSION
-  s.date          = '2013-06-05'
-  s.summary       = "An alpha-numeric code generator"
-  s.description   = "An alpha-numeric code generator"
+  s.date          = '2013-06-09'
+  s.summary       = "An alpha-numeric code generator for rails"
+  s.description   = "An alpha-numeric code generator for rails"
   s.authors       = ["Bharat Gupta"]
   s.email         = 'bindassbharat311@gmail.com'
   s.files         = `git ls-files`.split("\n")
