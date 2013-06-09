@@ -3,7 +3,7 @@
 Easily create unique and random tokens for your rails project.
 
 [![Gem Version](https://badge.fury.io/rb/code_generator.png)](http://badge.fury.io/rb/code_generator)
-[![Build Status](https://api.travis-ci.org/Bharat311/code_generator.png?branch=master)](http://travis-ci.org/Bharat311/code_generator)
+[![Build Status](https://travis-ci.org/Bharat311/code_generator.png?branch=master)](https://travis-ci.org/Bharat311/code_generator)
 [![Code Climate](https://codeclimate.com/github/Bharat311/code_generator.png)](https://codeclimate.com/github/Bharat311/code_generator)
 
 ## Installation
